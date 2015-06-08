@@ -73,14 +73,6 @@ var Profile = React.createClass({
     }
 });
 
-var Admin = React.createClass({
-    render: function () {
-        return (
-            <div>Admin page. Redirected from successful signing.</div>
-        )
-    }
-});
-
 var SignIn = React.createClass({
     contextTypes: {
         router: React.PropTypes.func
@@ -91,6 +83,11 @@ var SignIn = React.createClass({
             showError: false,
             textError: 'Incorrect login or password'
         }
+    },
+
+    handleClose: function() {
+        var router = this.context.router;
+        router.goBack();
     },
 
     handleSubmit: function (event) {
@@ -116,7 +113,7 @@ var SignIn = React.createClass({
     render: function () {
         return (
             <div>
-                <div className="overlay"></div>
+                <div className="overlay" onClick={this.handleClose}></div>
                 <div className="popup">
                     <h1>Sign in</h1>
 
@@ -163,6 +160,8 @@ var routes = (
         <Route name="profile" handler={Profile}/>
         <Route name="signIn" handler={SignIn}/>
         <Route name="admin" handler={Admin}/>
+
+        <Redirect from="main" to="/" />
     </Route>
 );
 
