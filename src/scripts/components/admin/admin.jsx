@@ -1,4 +1,8 @@
-var Admin = React.createClass({
+var React = require('react');
+var auth = require('../../shared/auth');
+
+module.exports = React.createClass({
+    displayName: 'Admin',
     statics: {
         willTransitionTo: function(transition) {
             if (!auth.loggedIn()) {
@@ -9,7 +13,7 @@ var Admin = React.createClass({
 
     render: function () {
         return (
-            <div>Admin page. Redirected from successful signing.</div>
+            <div>Admin page. Redirected from successful signing or just type /admin in URL</div>
         )
     }
 });

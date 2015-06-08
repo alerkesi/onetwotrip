@@ -10,6 +10,7 @@ var auth = {
 
     login: function (login, password) {
         if (login === this.data.users[0].login && password === this.data.users[0].password) {
+            localStorage.token = {login: password};
             this.data.loggedIn = true;
             auth.authChange(true);
         }
@@ -25,6 +26,6 @@ var auth = {
     },
 
     loggedIn: function () {
-        return this.data.loggedIn;
+        return !!localStorage.token;
     }
 };
