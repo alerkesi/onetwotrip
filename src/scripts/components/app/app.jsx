@@ -9,12 +9,15 @@ var auth = require('../../shared/auth');
 
 require('./styles/app.css');
 
+var TitleStore = require('../../stores/TitleStore');
+
 module.exports = React.createClass({
     displayName: 'App',
 
     getInitialState: function () {
         return {
-            loggedIn: auth.loggedIn()
+            loggedIn: auth.loggedIn(),
+            title: TitleStore.getTitle()
         };
     },
 
