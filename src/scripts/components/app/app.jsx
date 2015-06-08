@@ -7,6 +7,8 @@ var SignOut = require('../signOut/signOut');
 
 var auth = require('../../shared/auth');
 
+require('./styles/app.css');
+
 module.exports = React.createClass({
     displayName: 'App',
 
@@ -57,3 +59,5 @@ module.exports = React.createClass({
         );
     }
 });
+
+

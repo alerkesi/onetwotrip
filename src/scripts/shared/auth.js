@@ -1,4 +1,4 @@
-var auth = {
+module.exports = {
     data: {
         loggedIn: false,
         users: [{login: 'q', password: 'q'}, {login: 'test', password: 'test'}]

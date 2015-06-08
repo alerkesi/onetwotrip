@@ -15,7 +15,15 @@ module.exports = {
         loaders: [
             {
                 test: /\.jsx/,
-                loader: 'jsx-loader'}
+                loader: 'jsx-loader'
+            },
+            {
+                test: /\.css/,
+                loaders: [
+                    'style-loader',
+                    'css-loader'
+                ]
+            }
         ]
     },
     resolve: {
