@@ -1,0 +1,54 @@
+.app {
+    width: 600px;
+
+    margin: 0 auto;
+    background-color: #fff;
+}
+
+.navItem {
+    display: inline-block;
+}
+
+.navLink {
+    padding: 0.5em;
+}
+
+.navLink.active {
+    background-color: darkgray;
+}
+
+
+
+.navLink:visited {
+    color: inherit;
+}
+
+
+.overlay {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    background-color: #000;
+    opacity: 0.4;
+    z-index: 1
+}
+
+.popup {
+    background-color: #fff;
+    box-shadow: 0 0 15px 0 #000;
+    padding: 0 1em;
+    z-index: 2;
+    position: absolute;
+    top: 50px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 300px;
+    height: 200px;
+}
+
+.validation--error {
+    color: red;
+}
