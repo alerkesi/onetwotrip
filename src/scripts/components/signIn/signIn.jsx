@@ -1,5 +1,7 @@
 var Auth = require('../../base/Auth');
 
+require('./styles/signIn.css');
+
 module.exports = React.createClass({
     statics: {
         willTransitionTo: function(transition) {
@@ -30,11 +32,13 @@ module.exports = React.createClass({
     handleSubmit: function (event) {
         event.preventDefault();
         var router = this.context.router;
-        var login = React.findDOMNode(this.refs.login).value.trim();
-        var password = React.findDOMNode(this.refs.password).value.trim();
+        var loginInput = React.findDOMNode(this.refs.login);
+        var passwordInput = React.findDOMNode(this.refs.password);
+        var login = loginInput.value.trim();
+        var password = passwordInput.value.trim();
         if (Auth.login(login, password)) {
-            React.findDOMNode(this.refs.login).value = '';
-            React.findDOMNode(this.refs.password).value = '';
+            loginInput.value = '';
+            passwordInput.value = '';
             this.setState({
                 showError: false
             });
@@ -59,9 +63,9 @@ module.exports = React.createClass({
                             <div><span ref="validationError" className="validation--error">{this.state.textError}</span>
                             </div>
                         )}
-                        <div><input type="text" placeholder="Enter login" ref="login"/></div>
-                        <div><input type="password" placeholder="Enter password" ref="password"/></div>
-                        <div><input type="submit" value="Sign in"/>
+                        <div><input type="text" placeholder="Enter login" ref="login" className="formInput" /></div>
+                        <div><input type="password" placeholder="Enter password" ref="password" className="formInput" /></div>
+                        <div><button type="submit">Sign in</button>
                         </div>
                     </form>
                 </div>
