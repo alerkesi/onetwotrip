@@ -1,15 +1,10 @@
-var Auth = require('../../base/Auth');
+var LoginAction = require('../../actions/LoginAction');
 
 module.exports = React.createClass({
     displayName: 'SignOut',
-    contextTypes: {
-        router: React.PropTypes.func
-    },
 
     handleSignOut: function () {
-        var router = this.context.router;
-        Auth.logout();
-        router.replaceWith('/');
+        LoginAction.logout();
     },
 
     render: function () {

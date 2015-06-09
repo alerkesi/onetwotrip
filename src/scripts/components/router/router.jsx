@@ -13,10 +13,28 @@ var Profile = require('../profile/profile');
 var SignIn = require('../signIn/signIn');
 var Admin = require('../admin/admin');
 
+var TitleStore = require('../../stores/TitleStore');
+var LoginStore = require('../../stores/LoginStore');
+
+var LoginAction = require('../../actions/LoginAction');
+
+var props = {
+    title: TitleStore.getTitle(),
+    currentUser: LoginStore.getCurrentUser()
+};
+
+var FluxAppWrap = React.createClass({
+    render: function () {
+        return (
+            <FluxApp currentUser={props.currentUser} />
+        );
+    }
+});
+
 var routes = (
     <Route name="app" path="/" handler={FluxApp}>
 
-        <Route name="main" handler={Main}/>
+        <DefaultRoute name="main" handler={Main}/>
 
         <Route name="contacts" handler={Contacts}/>
         <Route name="profile" handler={Profile}/>

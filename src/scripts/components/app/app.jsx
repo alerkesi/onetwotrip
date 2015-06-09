@@ -3,28 +3,10 @@ var RouteHandler = Router.RouteHandler;
 
 var SignOut = require('../signOut/signOut');
 
-var Auth = require('../../base/Auth');
-
 require('./styles/app.css');
 
 module.exports = React.createClass({
     displayName: 'App',
-
-    getInitialState: function () {
-        return {
-            loggedIn: Auth.loggedIn()
-        };
-    },
-
-    setStateOnAuth: function () {
-        this.setState({
-            loggedIn: Auth.loggedIn()
-        });
-    },
-
-    componentWillMount: function () {
-        Auth.authChange = this.setStateOnAuth;
-    },
 
     render: function () {
         return (
@@ -35,14 +17,14 @@ module.exports = React.createClass({
                             <li className="navItem"><Link className="navLink" to="main">Main</Link></li>
                             <li className="navItem"><Link className="navLink" to="contacts">Contacts</Link></li>
 
-                            {this.state.loggedIn ? (
+                            {this.props.currentUser ? (
                                 <li className="navItem"><Link className="navLink" to="profile">Profile</Link></li>
                             ) : null}
 
                             <li className="navItem">
-                                {this.state.loggedIn ?
+                                {this.props.currentUser ?
                                     (
-                                        <SignOut />
+                                        <SignOut/>
                                     ) :
                                     (
                                         <Link className="navLink" to="signIn">Sign in</Link>
@@ -52,8 +34,9 @@ module.exports = React.createClass({
                         </ul>
                     </nav>
                 </header>
-                <RouteHandler />
-                <div><br/><br/><br/>This is title updated from store: {this.props.title}</div>
+                <RouteHandler/>
+                <div><br/><br/><br/>This is currentUser updated from store: {this.props.currentUser}</div>
+                <div>This is title updated from store: {this.props.title}</div>
             </div>
         );
     }
