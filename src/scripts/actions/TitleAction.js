@@ -1,5 +1,5 @@
 var AppDispatcher = require('../base/AppDispatcher');
-var AppConstants = require('../constants/AppConstants');
+var AppConstants = require('../constantss/AppConstants');
 var TitleClient = require('../clients/TitleClient');
 
 module.exports = {

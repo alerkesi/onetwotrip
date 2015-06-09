@@ -2,7 +2,7 @@ var EventEmitter = require('events').EventEmitter;
 var assign = require('object-assign');
 
 var AppDispatcher = require('../base/AppDispatcher');
-var AppConstants = require('../constants/AppConstants');
+var AppConstants = require('../constantss/AppConstants');
 
 var _title = 'OneTwoTrip';
 
