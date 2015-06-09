@@ -2,49 +2,49 @@ var EventEmitter = require('events').EventEmitter;
 var assign = require('object-assign');
 
 var AppDispatcher = require('../base/AppDispatcher');
+var AppConstants = require('../constants/AppConstants');
 
-var _title = {name: 'OneTwoTrip'};
+var _title = 'OneTwoTrip';
 
-function loadTitle(data) {
-  _title = data.title;
+function changeTitle(data) {
+    _title = data;
 }
 
 var TitleStore = assign({}, EventEmitter.prototype, {
 
-  getTitle: function() {
-    return _title;
-  },
+    getTitle: function () {
+        return _title;
+    },
 
-  emitChange: function() {
-    this.emit('change');
-  },
+    emitChange: function () {
+        this.emit('change');
+    },
 
-  addChangeListener: function(callback) {
-    this.on('change', callback);
-  },
+    addChangeListener: function (callback) {
+        this.on('change', callback);
+    },
 
-  removeChangeListener: function(callback) {
-    this.removeListener('change', callback);
-  }
+    removeChangeListener: function (callback) {
+        this.removeListener('change', callback);
+    }
 
 });
 
-AppDispatcher.register(function(payload) {
-  var action = payload.action;
-  var text;
+AppDispatcher.register(function (payload) {
+    var action = payload.action;
 
-  switch(action.actionType) {
-    case 'CHANGE_TITLE':
-      loadTitle(action.data);
-      break;
+    switch (action.actionType) {
+        case AppConstants.CHANGE_TITLE:
+            changeTitle(action.data);
+            break;
 
-    default:
-      return true;
-  }
+        default:
+            return true;
+    }
 
-  TitleStore.emitChange();
+    TitleStore.emitChange();
 
-  return true;
+    return true;
 
 });
 

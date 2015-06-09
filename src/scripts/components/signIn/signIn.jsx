@@ -1,4 +1,4 @@
-var auth = require('../../base/auth');
+var Auth = require('../../base/Auth');
 
 module.exports = React.createClass({
     contextTypes: {
@@ -22,7 +22,7 @@ module.exports = React.createClass({
         var router = this.context.router;
         var login = React.findDOMNode(this.refs.login).value.trim();
         var password = React.findDOMNode(this.refs.password).value.trim();
-        if (auth.login(login, password)) {
+        if (Auth.login(login, password)) {
             React.findDOMNode(this.refs.login).value = '';
             React.findDOMNode(this.refs.password).value = '';
             this.setState({

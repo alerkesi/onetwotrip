@@ -3,30 +3,27 @@ var RouteHandler = Router.RouteHandler;
 
 var SignOut = require('../signOut/signOut');
 
-var auth = require('../../base/auth');
+var Auth = require('../../base/Auth');
 
 require('./styles/app.css');
-
-var TitleStore = require('../../stores/TitleStore');
 
 module.exports = React.createClass({
     displayName: 'App',
 
     getInitialState: function () {
         return {
-            loggedIn: auth.loggedIn(),
-            title: TitleStore.getTitle()
+            loggedIn: Auth.loggedIn()
         };
     },
 
     setStateOnAuth: function () {
         this.setState({
-            loggedIn: auth.loggedIn()
+            loggedIn: Auth.loggedIn()
         });
     },
 
     componentWillMount: function () {
-        auth.authChange = this.setStateOnAuth;
+        Auth.authChange = this.setStateOnAuth;
     },
 
     render: function () {
@@ -56,6 +53,7 @@ module.exports = React.createClass({
                     </nav>
                 </header>
                 <RouteHandler />
+                <div>This is title updated from store: {this.props.title}</div>
             </div>
         );
     }

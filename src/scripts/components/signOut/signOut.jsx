@@ -1,4 +1,4 @@
-var auth = require('../../base/auth');
+var Auth = require('../../base/Auth');
 
 module.exports = React.createClass({
     displayName: 'SignOut',
@@ -8,7 +8,7 @@ module.exports = React.createClass({
 
     handleSignOut: function () {
         var router = this.context.router;
-        auth.logout();
+        Auth.logout();
         router.replaceWith('/');
     },
 

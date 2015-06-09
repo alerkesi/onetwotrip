@@ -1,5 +1,3 @@
-'use strict';
-
 var DefaultRoute = Router.DefaultRoute;
 var Link = Router.Link;
 var Route = Router.Route;
@@ -7,8 +5,9 @@ var RouteHandler = Router.RouteHandler;
 var Redirect = Router.Redirect;
 
 var FluxApp = require('../fluxApp/fluxApp');
-var Main = require('../main/main');
+var TitleAction = require('../../actions/TitleAction');
 
+var Main = require('../main/main');
 var Contacts = require('../contacts/contacts');
 var Profile = require('../profile/profile');
 var SignIn = require('../signIn/signIn');
@@ -28,6 +27,8 @@ var routes = (
     </Route>
 );
 
-Router.run(routes, function (Handler) {
+Router.run(routes, function (Handler, state) {
+    //show title depends on active page
+    TitleAction.changeTitle(state.path);
     React.render(<Handler />, document.getElementById('page'));
 });

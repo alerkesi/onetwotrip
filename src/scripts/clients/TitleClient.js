@@ -1,5 +1,5 @@
 module.exports = {
     writeTitle: function(title) {
-        document.write(title)
+        document.title = title
     }
 };

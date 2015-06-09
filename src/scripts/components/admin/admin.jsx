@@ -1,10 +1,10 @@
-var auth = require('../../base/auth');
+var Auth = require('../../base/Auth');
 
 module.exports = React.createClass({
     displayName: 'Admin',
     statics: {
         willTransitionTo: function(transition) {
-            if (!auth.loggedIn()) {
+            if (!Auth.loggedIn()) {
                 transition.redirect('/signIn', {}, {'nextPath' : transition.path});
             }
         }
