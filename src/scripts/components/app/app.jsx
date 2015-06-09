@@ -53,7 +53,7 @@ module.exports = React.createClass({
                     </nav>
                 </header>
                 <RouteHandler />
-                <div>This is title updated from store: {this.props.title}</div>
+                <div><br/><br/><br/>This is title updated from store: {this.props.title}</div>
             </div>
         );
     }

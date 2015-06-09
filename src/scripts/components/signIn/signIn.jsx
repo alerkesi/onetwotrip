@@ -1,6 +1,16 @@
 var Auth = require('../../base/Auth');
 
 module.exports = React.createClass({
+    statics: {
+        willTransitionTo: function(transition) {
+            if (Auth.loggedIn()) {
+                transition.redirect('/main');
+            }
+        }
+    },
+
+    displayName: 'SignIn',
+
     contextTypes: {
         router: React.PropTypes.func
     },
