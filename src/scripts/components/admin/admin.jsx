@@ -1,5 +1,4 @@
-var React = require('react');
-var auth = require('../../shared/auth');
+var auth = require('../../base/auth');
 
 module.exports = React.createClass({
     displayName: 'Admin',

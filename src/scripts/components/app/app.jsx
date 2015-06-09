@@ -1,11 +1,9 @@
-var React = require('react');
-var Router = require('react-router');
 var Link = Router.Link;
 var RouteHandler = Router.RouteHandler;
 
 var SignOut = require('../signOut/signOut');
 
-var auth = require('../../shared/auth');
+var auth = require('../../base/auth');
 
 require('./styles/app.css');
 
@@ -62,5 +60,3 @@ module.exports = React.createClass({
         );
     }
 });
-
-

@@ -1,4 +1,4 @@
-var React = require('react');
+var auth = require('../../base/auth');
 
 module.exports = React.createClass({
     displayName: 'SignOut',

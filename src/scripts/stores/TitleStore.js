@@ -1,6 +1,7 @@
-var AppDispatcher = require('../base/AppDispatcher');
 var EventEmitter = require('events').EventEmitter;
-var TitleConstants = require('../constants/TitleConstants');
+var assign = require('object-assign');
+
+var AppDispatcher = require('../base/AppDispatcher');
 
 var _title = {name: 'OneTwoTrip'};
 
@@ -8,10 +9,8 @@ function loadTitle(data) {
   _title = data.title;
 }
 
-// Merge our store with Node's Event Emitter
-var TitleStore = merge(EventEmitter.prototype, {
+var TitleStore = assign({}, EventEmitter.prototype, {
 
-  // Returns all title
   getTitle: function() {
     return _title;
   },
@@ -30,14 +29,12 @@ var TitleStore = merge(EventEmitter.prototype, {
 
 });
 
-// Register dispatcher callback
 AppDispatcher.register(function(payload) {
   var action = payload.action;
   var text;
-  // Define what to do for certain actions
+
   switch(action.actionType) {
-    case TitleConstants.LOAD_TITLE:
-      // Call internal method based upon dispatched action
+    case 'CHANGE_TITLE':
       loadTitle(action.data);
       break;
 
@@ -45,7 +42,6 @@ AppDispatcher.register(function(payload) {
       return true;
   }
 
-  // If action was acted upon, emit change event
   TitleStore.emitChange();
 
   return true;

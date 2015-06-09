@@ -10,9 +10,8 @@ module.exports = {
 
     login: function (login, password) {
         if (login === this.data.users[0].login && password === this.data.users[0].password) {
-            localStorage.token = {login: password};
             this.data.loggedIn = true;
-            auth.authChange(true);
+            this.authChange(true);
         }
 
         return this.data.loggedIn;
@@ -20,12 +19,12 @@ module.exports = {
 
     logout: function () {
         this.data.loggedIn = false;
-        auth.authChange(true);
+        this.authChange(true);
 
         return this.data.loggedIn;
     },
 
     loggedIn: function () {
-        return !!localStorage.token;
+        return this.data.loggedIn;
     }
 };
